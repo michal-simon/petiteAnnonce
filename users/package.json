@@ -1,0 +1,22 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "Service d'autentification utilisateur",
+  "main": "app.js",
+  "author": "Afjnik hassan",
+  "license": "MIT",
+  "scripts": {
+    "watch": "babel-watch -L src/app.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "babel-watch": "^7.0.0"
+  }
+}

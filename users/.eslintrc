@@ -1,0 +1,36 @@
+{
+    "extends": "airbnb-base",
+    "env": {
+        "es6": true,
+        "commonjs": true,
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "brace-style": [
+            "error",
+            "stroustrup"
+        ],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "no-unused-vars": [
+            "warn"
+        ],
+        "no-var": [
+            "off"
+        ],
+        "one-var": [
+            "off"
+        ],
+        "consistent-return": "off",
+        "no-console": "off",
+        "no-param-reassign": [2, {"props": false}],
+        "prefer-destructuring": 0,
+        "treatUndefinedAsUnspecified": 0,
+        "arrow-body-style": 0,
+        "import/no-dynamic-require": "off",
+        "no-unused-expressions": "off"
+    }
+}
