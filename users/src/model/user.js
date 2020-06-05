@@ -1,12 +1,18 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+require('mongoose-type-email');
 
-dotenv.config();
-
-mongoose.connect(`mongodb://${process.env.DB_HOST}/${process.env.DB_DATABASE}`, {useNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected')
+const userSchema = new mongoose.Schema({
+    civilite: Number, required: true,
+    nom: String, required: true,
+    prenom: String, required: true,
+    pseudo: String, required: true,
+    adresse: String,
+    codePostal: Number,
+    telephone: Number,
+    email: mongoose.SchemaTypes.Email, required: true,
+    password: mongoose.Mixed, required: true
 });
+
+const user = mongoose.model('User', userSchema);
+
+module.exports = user;
