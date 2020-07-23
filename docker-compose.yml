@@ -7,6 +7,9 @@ services:
     restart: on-failure
     ports:
       - "3000:3000"
+    environment:
+      DB_HOST: users_db
+      DB_DATABASE: users
     networks:
       - network
     depends_on:

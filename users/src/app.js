@@ -1,13 +1,11 @@
 import express from 'express';
-
+import mongoose from 'mongoose'
+import { config } from './config/mongodb.config';
 const app = express();
-import dotenv from 'dotenv';
 
-dotenv.config();
+mongoose.connect(config.url, config.flags );
 
-mongoose.connect(`mongodb://${process.env.DB_HOST}/${process.env.DB_DATABASE}`, {useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
-
 db.on('error', console.error.bind(console, 'Erreur de connexion à la base de donnée:'));
 db.once('open', function() {
   console.log('Connexion à la base de donnée réussi')

@@ -22,6 +22,8 @@
     "mongoose-type-email": "^1.0.12"
   },
   "devDependencies": {
-    "babel-watch": "^7.0.0"
+    "babel-watch": "^7.0.0",
+    "chai": "^4.2.0",
+    "jest": "^26.0.1"
   }
 }
