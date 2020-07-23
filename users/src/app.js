@@ -1,10 +1,9 @@
 import express from 'express';
+import mongoose from 'mongoose';
 
 const app = express();
-import dotenv from 'dotenv';
 
-dotenv.config();
-
+console.log(`mongodb://${process.env.DB_HOST}/${process.env.DB_DATABASE}`)
 mongoose.connect(`mongodb://${process.env.DB_HOST}/${process.env.DB_DATABASE}`, {useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 
