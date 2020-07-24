@@ -34,13 +34,13 @@ const publicationSchema = new mongoose.Schema({
         createdAt: {
             type: Date,
             default: Date.now
-        },    
+        },
         updatedAt: {
             type: Date
-        },   
+        },
         publishedAt: {
             type: Date
-        },  
+        },
         email: {
             type: mongoose.SchemaTypes.Email,
             required: true,
