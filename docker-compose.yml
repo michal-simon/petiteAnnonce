@@ -21,7 +21,7 @@ services:
     environment:
       DB_HOST: users_db
       DB_DATABASE: users
-
+      DB_PORT: 7200
   users_db:
     image:  mongo:latest
     volumes:
@@ -31,7 +31,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: users
     ports:
-      - "27017:27017"
+      - "7200:27017"
     restart: on-failure
     networks:
       - network
