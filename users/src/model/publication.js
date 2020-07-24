@@ -5,40 +5,42 @@ import bcrypt from 'bcrypt';
 require('mongoose-type-email');
 
 const publicationSchema = new mongoose.Schema({
-    civilite: {
+    titre: {
+        type: String,
+        limit: 100,
+        required: true
+    },
+    prix: {
         type: Number,
         required: true
     },
-    nom: {
+    description: {
         type: String,
         required: true
     },
-    prenom: {
+    ville: {
         type: String,
         required: true
     },
-    pseudo: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: mongoose.Mixed,
-        required: true
+    images: {
+        type: Schema.ObjectId,
+        ref: 'Images'
     },
     isActive: {
         type: Boolean,
         default: false
     },
-    contact: {
-        adresse: {
-            type: String
-        },
-        codePostal: {
-            type: Number
-        },
-        telephone: {
-            type: Number
-        },
+    details: {
+        createdAt: {
+            type: Date,
+            default: Date.now
+        },    
+        updatedAt: {
+            type: Date
+        },   
+        publishedAt: {
+            type: Date
+        },  
         email: {
             type: mongoose.SchemaTypes.Email,
             required: true,
