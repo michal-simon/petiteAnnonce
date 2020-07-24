@@ -7,23 +7,31 @@ require('mongoose-type-email');
 const userSchema = new mongoose.Schema({
     civilite: {
         type: Number,
-        required: true
+        required: [true, 'Vous un homme ou une femme']
     },
     nom: {
         type: String,
-        required: true
+        required: [true, 'Quel est votre nom']
     },
     prenom: {
         type: String,
-        required: true
+        required: [true, 'Quel est votre prénom']
     },
     pseudo: {
         type: String,
-        required: true
+        required: [true, 'Votre pseudo est requis']
     },
     password: {
         type: mongoose.Mixed,
-        required: true
+        required: [true, 'Veuillez à renseigner un mot de passe valide'],
+        min: 8,
+        max: 14,
+        validate: {
+            validator: function(v) {
+                return /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/.test(v)
+            },
+            message: props => `Votre mot de passe ne respecter pas les indications de sécurité`
+        }
     },
     isActive: {
         type: Boolean,
@@ -34,15 +42,26 @@ const userSchema = new mongoose.Schema({
             type: String
         },
         codePostal: {
-            type: Number
+            type: String
         },
         telephone: {
-            type: Number
+            type: Number,
+            validate: function(v) {
+                return /^(0[1-9]{1}[0-9]{8}|\+?33[1-9][0-9]{8})$/.test(v)
+            },
+            message: props => `${props.value} ce numéro de téléphone n'est pas correct`,
+            required: [true, 'Veuillez indiquer un numéro de téléphone valide']
         },
         email: {
             type: mongoose.SchemaTypes.Email,
-            required: true,
-            unique: true
+            unique: true,
+            validate: {
+                validator: function (v) {
+                    return /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/.test(v.trim());
+                },
+                message: props => `${props.value} ce numéro n'est pas valide`
+            },
+            required: [true, `l'email est requis`],
         },
     },
 
