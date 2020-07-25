@@ -13,8 +13,10 @@
     [
       "module-resolver",
       {
+        "root": ["./src"],
         "alias": {
-          "#root": "./src"
+          "test": "./test",
+          "underscore": "lodash"
         }
       }
     ]
