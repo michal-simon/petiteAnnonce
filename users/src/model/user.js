@@ -70,7 +70,7 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     },
 
-    publication: {
+    publications: {
         type: Schema.ObjectId,
         ref: 'Publication'
     },

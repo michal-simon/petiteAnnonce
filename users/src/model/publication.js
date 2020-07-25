@@ -1,7 +1,9 @@
 import mongoose, {
     Schema
 } from 'mongoose';
-import bcrypt from 'bcrypt';
+
+import slugify from 'utils/slugify';
+
 require('mongoose-type-email');
 
 const publicationSchema = new mongoose.Schema({
@@ -10,6 +12,9 @@ const publicationSchema = new mongoose.Schema({
         limit: 100,
         required: true
     },
+    slug: {
+        type: String
+    },
     prix: {
         type: Number,
         required: true
@@ -17,6 +22,14 @@ const publicationSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    etat: {
+        type: Schema.ObjectId,
+        ref: 'Etat'
+    },
+    etat: {
+        type: Schema.ObjectId,
+        ref: 'Categorie'
     },
     ville: {
         type: String,
@@ -30,7 +43,7 @@ const publicationSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    details: {
+    Statuts: {
         createdAt: {
             type: Date,
             default: Date.now
@@ -40,38 +53,14 @@ const publicationSchema = new mongoose.Schema({
         },
         publishedAt: {
             type: Date
-        },
-        email: {
-            type: mongoose.SchemaTypes.Email,
-            required: true,
-            unique: true
-        },
+        }
     },
-
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-
-    publication: {
-        type: Schema.ObjectId,
-        ref: 'Publication'
-    },
-    details: {
-        recommandations: {
-            Type: Number,
-            default: 0
-        },
-        photo: {
-            Type: String,
-            default: 'https://www.fillmurray.com/64/64'
-        },
-    }
 
 });
 
-userSchema.pre('save', function (next) {
-
+publicationSchema.pre('save', function (next) {
+        this.slug = slugify(this.titre);
+        next();
 });
 
 module.exports = mongoose.model('Publication', publicationSchema);
