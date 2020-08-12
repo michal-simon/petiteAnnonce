@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 
 const app = express();
 
-const urlDb = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
-console.log(urlDb);
-mongoose.connect(urlDb, {useNewUrlParser: true, useUnifiedTopology: true});
+
+console.log(process.env.DB_URI);
+mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion à la base de donnée:'));
 db.once('open', function() {
