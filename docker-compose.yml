@@ -7,9 +7,6 @@ services:
     restart: on-failure
     ports:
       - "3000:3000"
-    environment:
-      DB_HOST: users_db
-      DB_DATABASE: users
     networks:
       - network
     depends_on:
@@ -19,9 +16,9 @@ services:
     volumes:
       - './users:/app'
     environment:
-      DB_HOST: users_db
-      DB_DATABASE: users
-      DB_PORT: 7200
+      - DB_HOST=users_db
+      - DB_DATABASE=users
+      - DB_PORT=7200
   users_db:
     image:  mongo:latest
     volumes:
@@ -31,7 +28,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: users
     ports:
-      - "7200:27017"
+      - 7200:27017
     restart: on-failure
     networks:
       - network
