@@ -1,10 +1,21 @@
 {
-    "extends": "airbnb-base",
+    "extends": ["eslint:recommended", "google"],
+    "root": true,
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module",
+        "babelOptions": {
+            "configFile": "./users/.babelrc"
+          }
+    },
+    "plugins": ["jest"],
     "env": {
-        "es6": true,
+        "es2020": true,
         "commonjs": true,
         "node": true,
-        "mocha": true
+        "mocha": true,
+        "browser": true
     },
     "rules": {
         "brace-style": [
@@ -24,6 +35,7 @@
         "one-var": [
             "off"
         ],
+        "max-len": ["error", 100],
         "consistent-return": "off",
         "no-console": "off",
         "no-param-reassign": [2, {"props": false}],
