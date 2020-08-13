@@ -1,0 +1,48 @@
+{
+    "extends": ["eslint:recommended", "google"],
+    "root": true,
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module",
+        "babelOptions": {
+            "configFile": "./users/.babelrc"
+          }
+    },
+    "plugins": ["jest"],
+    "env": {
+        "es2020": true,
+        "commonjs": true,
+        "node": true,
+        "mocha": true,
+        "browser": true
+    },
+    "rules": {
+        "brace-style": [
+            "error",
+            "stroustrup"
+        ],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "no-unused-vars": [
+            "warn"
+        ],
+        "no-var": [
+            "off"
+        ],
+        "one-var": [
+            "off"
+        ],
+        "max-len": ["error", 100],
+        "consistent-return": "off",
+        "no-console": "off",
+        "no-param-reassign": [2, {"props": false}],
+        "prefer-destructuring": 0,
+        "treatUndefinedAsUnspecified": 0,
+        "arrow-body-style": 0,
+        "import/no-dynamic-require": "off",
+        "no-unused-expressions": "off"
+    }
+}
