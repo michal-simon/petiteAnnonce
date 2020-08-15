@@ -1,9 +1,10 @@
-version: "3.1"
+version: "3.8"
 services:
   users-service:
+    container_name: webapp
     build: 
-      context: .
-      dockerfile: ./users/Dockerfile
+      context: ./users
+      dockerfile: ./Dockerfile
     restart: on-failure
     ports:
       - "3000:3000"
@@ -14,9 +15,8 @@ services:
     links:
       - users_db
     volumes:
-      - './users:/app'
-    environment:
-      - DB_URI=mongodb://root:root@users_db:7200/users
+      - .:/usr/src/app
+    working_dir: /usr/src/app
   users_db:
     image:  mongo:latest
     volumes:
@@ -26,11 +26,10 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=root
       - MONGO_INITDB_DATABASE=users
     ports:
-      - 7200:27017
+      - 0.0.0.0:7200:27017
     restart: on-failure
     networks:
       - network
-
   mongo-express:
     image: mongo-express
     environment:
