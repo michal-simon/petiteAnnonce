@@ -2,18 +2,18 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 const app = express();
+const env = process.env;
+const URI = `mongodb://${env.DB_USER}:${env.DB_PASS}@${env.DB_SERVER}:${env.DB_PORT}/${env.DB_NAME}`;
+console.log(URI);
 
-
-console.log(process.env.DB_URI);
-mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
-var db = mongoose.connection;
+mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion à la base de donnée:'));
-db.once('open', function() {
-  console.log('Connexion à la base de donnée réussi');
+
+db.once('open', () => {
+  console.log('Connexion à la base de donnée réussi', 'color: green;');
 });
 
-app.get('/', async (req, res) => {
-  return res.send('App working');
-});
+app.use(require('./controllers/routes'));
 
-app.listen(3000, console.log(`Le serveur à démarrer sur le port ${process.env.PORT} `));
+app.listen(process.env.APP_PORT, console.log(`Le serveur à démarrer sur le port ${process.env.APP_PORT}`));

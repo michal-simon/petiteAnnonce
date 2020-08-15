@@ -76,11 +76,11 @@ const userSchema = new mongoose.Schema({
     },
     details: {
         recommandations: {
-            Type: Number,
+            type: Number,
             default: 0
         },
         photo: {
-            Type: String,
+            type: String,
             default: 'https://www.fillmurray.com/64/64'
         },
     }
