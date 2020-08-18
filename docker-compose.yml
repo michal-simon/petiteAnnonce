@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3"
 services:
   users-service:
     container_name: webapp
@@ -15,9 +15,10 @@ services:
     links:
       - users_db
     volumes:
-      - .:/usr/src/app
-    working_dir: /usr/src/app
+      - ./users:/home/www/webapp
+      - /home/www/webapp/node_modules
   users_db:
+    container_name: mongoDb
     image:  mongo:latest
     volumes:
       - db-data:/data/db
@@ -31,6 +32,7 @@ services:
     networks:
       - network
   mongo-express:
+    container_name: mongo-express
     image: mongo-express
     environment:
       ME_CONFIG_MONGODB_SERVER: users_db
