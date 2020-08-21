@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   users-service:
     container_name: webapp
@@ -9,47 +9,47 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - network
+      - api
     depends_on:
-      - users_db
+      - postgres
     links:
-      - users_db
+      - postgres
     volumes:
       - ./users:/home/www/webapp
       - /home/www/webapp/node_modules
-  users_db:
-    container_name: mongoDb
-    image:  mongo:latest
+  postgres:
+    container_name: postgres
+    image:  postgres:latest
     volumes:
-      - db-data:/data/db
+      - pgdata:/var/lib/postgresql/data
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
-      - MONGO_INITDB_DATABASE=users
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=users
     ports:
-      - 0.0.0.0:7200:27017
+      - 7200:5432
     restart: on-failure
     networks:
-      - network
-  mongo-express:
-    container_name: mongo-express
-    image: mongo-express
+      - api
+  pgadmin4:
+    container_name: pgadmin4
+    image: dpage/pgadmin4:latest
     environment:
-      ME_CONFIG_MONGODB_SERVER: users_db
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
-    restart: always
+      PGADMIN_DEFAULT_EMAIL: yecodeo@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+      # WAIT_HOSTS: users_db:27017
+    restart: on-failure
     ports:
-      - 8081:8081
+      - 8081:80
     depends_on:
-      - users_db
+      - postgres
     links:
-      - users_db
+      - postgres
     networks:
-      - network
+      - api
 
 volumes:
-  db-data: {}
+  pgdata: {}
 networks:
-  network:
+  api:
     driver: bridge
