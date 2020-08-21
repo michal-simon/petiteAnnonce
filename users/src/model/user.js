@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
             type: String
         },
         telephone: {
-            type: Number,
+            type: String,
             validate: function(v) {
                 return /^(0[1-9]{1}[0-9]{8}|\+?33[1-9][0-9]{8})$/.test(v)
             },
@@ -69,7 +69,9 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-
+    updatedAt: {
+        type: Date
+    },
     publications: {
         type: Schema.ObjectId,
         ref: 'Publication'
@@ -91,7 +93,7 @@ userSchema.pre('save', function (next) {
     if (this.password && this.isModified('password'));
     bcrypt.hashSync(this.password, 10, function (err, hash) {
         this.password = hash;
-    });
+    }).catch(err => console.log(err));;
     next();
 });
 

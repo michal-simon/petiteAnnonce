@@ -1,18 +1,18 @@
 import express from 'express';
-import mongoose from 'mongoose';
+
+const { Sequelize } = require('sequelize');
 
 const app = express();
 const env = process.env;
-const URI = `mongodb://${env.DB_USER}:${env.DB_PASS}@${env.DB_SERVER}:${env.DB_PORT}/${env.DB_NAME}`;
+const URI = `postgres://${env.DB_USER}:${env.DB_PASS}@${env.DB_SERVER}:${env.DB_PORT}/${env.DB_NAME}`;
+console.log(URI);
 
-mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Erreur de connexion à la base de donnée:'));
+const seq = new Sequelize(URI);
 
-db.once('open', () => {
-  console.log('Connexion à la base de donnée réussi', 'color: green;');
-});
+seq.authenticate().then(() => {
+  console.log('Connection has been established successfully.');
+}).catch(err => console.log(err));
 
-app.use(require('./controllers/routes'));
+//  app.use(require('./controllers/routes'));
 
 app.listen(process.env.APP_PORT, console.log(`Le serveur à démarrer sur le port ${process.env.APP_PORT}`));
