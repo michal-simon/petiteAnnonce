@@ -1,18 +1,12 @@
 import express from 'express';
 
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
+
+import db from './models';
 
 const app = express();
 const env = process.env;
-const URI = `postgres://${env.DB_USER}:${env.DB_PASS}@${env.DB_SERVER}:${env.DB_PORT}/${env.DB_NAME}`;
-console.log(URI);
-
-const seq = new Sequelize(URI);
-
-seq.authenticate().then(() => {
-  console.log('Connection has been established successfully.');
-}).catch(err => console.log(err));
 
 //  app.use(require('./controllers/routes'));
-
+console.log('app', db.models);
 app.listen(process.env.APP_PORT, console.log(`Le serveur à démarrer sur le port ${process.env.APP_PORT}`));
