@@ -2,9 +2,10 @@
 	"development": {
 	  "username": "root",
 	  "password": "root",
-	  "database": "user",
-	  "host": "users_db",
-	  "dialect": "postgres"
+	  "database": "users",
+	  "host": "localhost",
+	  "dialect": "postgres",
+	  "port": 7200
 	},
 	"test": {
 	  "username": "root",
