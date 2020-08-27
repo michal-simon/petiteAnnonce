@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       comment: 'Code postale'
     },
     telephone: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       validate: {
         isPhone(v) {
           const match = /^(0[1-9]{1}[0-9]{8}|\+?33[1-9][0-9]{8})$/.test(v);
