@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     fullName: {
       type: DataTypes.VIRTUAL,
       get() {
-        return `${this.civilite} ${this.nom.upperCase()} ${this.prenom}`;
+        return `${this.civilite} ${this.nom.toUpperCase()} ${this.prenom}`;
       }
     },
     pseudo: {
