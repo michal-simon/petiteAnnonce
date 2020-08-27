@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users',
+    return queryInterface.bulkInsert('users',
       [{
         civilite: '0',
         nom: 'Afjnik',
@@ -49,6 +49,6 @@ module.exports = {
      *
      * Example:
      */
-    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('users', null, {});
   }
 };
