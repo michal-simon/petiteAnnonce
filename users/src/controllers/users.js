@@ -4,7 +4,10 @@ import {
 import db from '../models';
 
 const router = Router();
-
+/**
+ * Get user profil
+ * @return {JSON}
+ */
 router.get('/:id', (req, res) => {
   db.models.user.findOne({
     where: {
@@ -20,6 +23,10 @@ router.get('/:id', (req, res) => {
   });
 });
 
+/**
+ * update user profil
+  * @return {JSON}
+ */
 router.put('/:id', async (req, res) => {
   db.models.user.update(req.body, {
     where: {
@@ -37,6 +44,10 @@ router.put('/:id', async (req, res) => {
   });
 });
 
+/**
+ * signup a new user
+  * @return {JSON}
+ */
 router.post('/', async (req, res) => {
   const newProfile = req.body;
   db.models.user.create(newProfile).then((newUser) => {
@@ -49,6 +60,10 @@ router.post('/', async (req, res) => {
   });
 });
 
+/**
+ * Delete user
+  * @return {JSON}
+ */
 router.delete('/:id', (req, res) => {
   db.models.user.destroy({
     where: {
