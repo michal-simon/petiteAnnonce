@@ -6,7 +6,8 @@
   "author": "Afjnik hassan",
   "license": "MIT",
   "scripts": {
-    "watch": "babel-watch -L src/app.js"
+    "watch": "babel-watch -L src/app.js",
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -30,6 +31,7 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/register": "^7.10.5",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-watch": "^7.0.0",
@@ -39,6 +41,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.20.0",
     "jest": "^26.4.2",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^4.0.2"
   }
 }
