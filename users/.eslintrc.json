@@ -1,5 +1,5 @@
 {
-    "extends": ["eslint:recommended", "airbnb-base"],
+    "extends": ["eslint:recommended", "airbnb-base","plugin:jest/recommended"],
     "root": true,
     "parser": "@babel/eslint-parser",
     "parserOptions": {
@@ -15,7 +15,8 @@
         "commonjs": true,
         "node": true,
         "mocha": true,
-        "browser": true
+        "browser": false,
+        "jest": true
     },
     "rules": {
         "brace-style": [
