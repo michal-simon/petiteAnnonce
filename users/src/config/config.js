@@ -1,4 +1,28 @@
 const env = process.env;
-const config = `postgres://${env.DB_USER}:${env.DB_PASS}@${env.DB_SERVER}:${env.DB_PORT}/${env.DB_NAME}`;
 
-export default config;
+module.exports = {
+  development: {
+    username: env.DB_USER,
+    password: env.DB_PASS,
+    database: env.DB_NAME,
+    host: env.DB_HOST,
+    dialect: 'postgres',
+    port: env.DB_PORT
+  },
+  test: {
+    username: env.DB_USER,
+    password: env.DB_PASS,
+    database: env.DB_NAME,
+    host: env.DB_HOST,
+    dialect: 'postgres',
+    port: env.DB_PORT
+  },
+  production: {
+    username: env.DB_USER,
+    password: env.DB_PASS,
+    database: env.DB_NAME,
+    host: env.DB_HOST,
+    dialect: 'postgres',
+    port: env.DB_PORT
+  }
+};
