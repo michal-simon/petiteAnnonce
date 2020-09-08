@@ -17,7 +17,7 @@ ENV DB_PORT=$DB_PORT
 
 RUN useradd --user-group --create-home --shell /bin/false $USER
 ENV HOME=/home/$USER
-COPY package.json package-lock.json $HOME/$DIRAPP/
+COPY package.json yarn.lock $HOME/$DIRAPP/
 RUN chown -R $USER:$USER $HOME/*
 USER $USER
 WORKDIR $HOME/$DIRAPP
