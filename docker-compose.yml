@@ -5,6 +5,8 @@ services:
     build: 
       context: ./users
       dockerfile: ./Dockerfile
+      args:
+        DB_PORT: 7200
     restart: on-failure
     ports:
       - "3000:3000"

@@ -9,8 +9,11 @@ ENV DB_SERVER=postgres
 ENV DB_NAME=users
 ENV DB_USER=root
 ENV DB_PASS=root
-ENV DB_PORT=5432
 ENV APP_PORT=3000
+ENV DB_HOST=localhost
+# importing port argument
+ARG DB_PORT
+ENV DB_PORT=$DB_PORT
 
 RUN useradd --user-group --create-home --shell /bin/false $USER
 ENV HOME=/home/$USER
