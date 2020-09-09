@@ -5,12 +5,11 @@ ENV USER=www
 ENV DIRAPP=webapp
 
 ENV NODE_ENV=development
-ENV DB_SERVER=postgres
 ENV DB_NAME=users
 ENV DB_USER=root
 ENV DB_PASS=root
 ENV APP_PORT=3000
-ENV DB_HOST=localhost
+ENV DB_HOST=postgres
 # importing port argument
 ARG DB_PORT
 ENV DB_PORT=$DB_PORT

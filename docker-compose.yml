@@ -50,7 +50,7 @@ services:
     networks:
       - api
     volumes:
-      - pgadmin:/pgadmin
+      - pgadmin:/var/lib/pgadmin
 volumes:
   pgdata: {}
   pgadmin: {}
