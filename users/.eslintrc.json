@@ -18,6 +18,11 @@
         "browser": false,
         "jest": true
     },
+    "settings": {
+        "jest": {
+            "version": 26
+        }
+    },
     "rules": {
         "brace-style": [
             "error",
