@@ -15,7 +15,9 @@ module.exports = {
         telephone: '0661656000',
         email: 'yecodeo@gmail.com',
         recommandations: 5,
-        photo: 'https://www.fillmurray.com/64/64'
+        photo: 'https://www.fillmurray.com/64/64',
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         civilite: '1',
@@ -29,7 +31,9 @@ module.exports = {
         telephone: '0661656000',
         email: 'afjnik@gmail.com',
         recommandations: 5,
-        photo: 'https://www.fillmurray.com/64/64'
+        photo: 'https://www.fillmurray.com/64/64',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
       ]);
     /**
