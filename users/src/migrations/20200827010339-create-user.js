@@ -72,7 +72,9 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'https://www.fillmurray.com/64/64',
         comment: 'Photo'
-      }
+      },
+      updatedAt: Sequelize.DATE,
+      createdAt: Sequelize.DATE
     });
   },
   down: async (queryInterface, Sequelize) => {
