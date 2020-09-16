@@ -6,11 +6,11 @@
   "author": "Afjnik hassan",
   "license": "MIT",
   "scripts": {
-    "watch": "babel-watch -L src/server.js",
-    "migrate": "npx sequelize-cli db:migrate",
-    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "cross-env NODE_ENV=test npm run migrate:reset"
+    "watch": "babel-watch --watchAll -L src/server.js",
+    "migrate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && yarn migrate",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --watchAll",
+    "pretest": "cross-env NODE_ENV=test yarn migrate:reset"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
