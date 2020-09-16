@@ -1,7 +1,7 @@
 import {
   Router
 } from 'express';
-import db from '../models';
+import db from '../db';
 
 const router = Router();
 /**
