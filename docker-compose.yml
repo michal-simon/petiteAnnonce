@@ -1,12 +1,12 @@
 version: "3.8"
 services:
-  users-service:
-    container_name: webapp
+  user-app:
+    container_name: user-app
     build: 
       context: ./users
       dockerfile: ./Dockerfile
       args:
-        DB_PORT: 7200
+        DB_PORT: 5432
     restart: on-failure
     ports:
       - "3000:3000"
@@ -20,7 +20,6 @@ services:
       - ./users:/home/www/webapp
       - /home/www/webapp/node_modules
   postgres:
-    container_name: postgres
     image:  postgres:latest
     volumes:
       - pgdata:/var/lib/postgresql/data
