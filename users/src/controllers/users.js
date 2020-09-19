@@ -1,9 +1,12 @@
 import {
   Router
 } from 'express';
+import { usersValidation, validate } from './validators/users.validator';
+
 import db from '../db';
 
 const router = Router();
+
 /**
  * Get user profil
  * @return {JSON}
@@ -48,7 +51,7 @@ router.put('/:id', async (req, res) => {
  * signup a new user
   * @return {JSON}
  */
-router.post('/', async (req, res) => {
+router.post('/', usersValidation(), validate, async (req, res) => {
   const newProfile = req.body;
   db.models.user.create(newProfile).then((newUser) => {
     if (newUser?.id) {
