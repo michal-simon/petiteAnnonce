@@ -5,7 +5,7 @@ const config = require('../config/config')[env];
 const { applyExtraSetup } = require('./extra-setup');
 
 const sequelize = new Sequelize(config);
-console.log(config);
+
 /* eslint global-require: "off" */
 const modelDefiners = [
   require('./models/user.model')

@@ -5,58 +5,100 @@ const usersValidation = () => {
     body('nom')
       .not()
       .notEmpty()
-      .withMessage('Merci de renseignez votre nom')
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.nom.empty', { value, location, path });
+      })
       .bail()
       .isString()
-      .bail()
-      .withMessage('Veuillez entrer un nom valide')
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.nom.valide', { value, location, path });
+      })
       .bail(),
     body('prenom')
-      .isString()
       .not()
       .notEmpty()
-      .withMessage('Veuillez entrer un prénom valide')
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.prenom.empty', { value, location, path });
+      })
+      .bail()
+      .isString()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.prenom.valide', { value, location, path });
+      })
       .bail(),
     body('pseudo')
-      .isString()
-      .trim()
       .not()
       .notEmpty()
-      .withMessage('Veuillez entrer un pseudo valide')
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.pseudo.empty', { value, location, path });
+      })
+      .bail()
+      .isString()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.pseudo.valide', { value, location, path });
+      })
+      .trim()
       .bail(),
     body('password')
       .not()
       .notEmpty()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.password.empty', { value, location, path });
+      })
+      .bail()
       .custom((value) => {
         return /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/.test(value);
       })
-      .withMessage('Votre mot de passe ne respecter pas les indications de sécurité')
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.password.valide', { value, location, path });
+      })
       .bail(),
     body('adresse')
       .not()
       .notEmpty()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.adresse.empty', { value, location, path });
+      })
+      .bail()
       .escape()
-      .trim()
-      .bail(),
+      .trim(),
     body('codePostal')
       .not()
       .notEmpty()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.codePostal.empty', { value, location, path });
+      })
+      .bail()
       .isPostalCode('FR')
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.codePostal.valide', { value, location, path });
+      })
       .bail(),
     body('telephone')
       .not()
       .notEmpty()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.telephone.empty', { value, location, path });
+      })
+      .bail()
       .isMobilePhone(['fr-FR'])
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.telephone.valide', { value, location, path });
+      })
       .bail(),
     body('email')
       .not()
       .notEmpty()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.email.empty', { value, location, path });
+      })
+      .bail()
       .normalizeEmail()
       .isEmail()
+      .withMessage((value, { req, location, path }) => {
+        return req.t('validation.email.valide', { value, location, path });
+      })
       .trim()
-      .bail(),
-    body('photo')
-      .isURL()
       .bail()
   ];
 };
@@ -68,7 +110,6 @@ const validate = (req, res, next) => {
   }
   const extractedErrors = [];
   errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
-  console.log(extractedErrors);
   return res.status(422).json({
     errors: extractedErrors
   });
