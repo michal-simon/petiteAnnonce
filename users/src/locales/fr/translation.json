@@ -1,0 +1,39 @@
+{
+	"home": {
+	  "title": "Hallo Welt!"
+	},
+	"validation": {
+		"nom": {
+			"empty": "Merci de renseignez votre nom",
+			"valide": "Veuillez renseignez un nom valide"
+		},		
+		"prenom": { 
+			"empty": "Merci de renseignez votre prénom",
+			"valide": "Veuillez renseignez un prénom valide"
+		},
+		"pseudo": { 
+			"empty": "Merci de renseignez un pseudo",
+			"valide": "Veuillez renseignez un pseudo valide"
+		},
+		"password": { 
+			"empty": "Merci de renseignez un mot de passe",
+			"valide": "Votre mot de passe ne respecter pas les indications de sécurité"
+		},
+		"adresse": { 
+			"empty": "Merci de renseignez une adresse",
+			"valide": "Veuillez renseignez un adresse valide"
+		},
+		"codePostal": { 
+			"empty": "Merci de renseignez un code postal",
+			"valide": "Veuillez renseignez un code postal valide"
+		},
+		"telephone": { 
+			"empty": "Merci de renseignez un telephone",
+			"valide": "Veuillez renseignez un telephone valide"
+		},
+		"email": { 
+			"empty": "Merci de renseignez un email",
+			"valide": "Veuillez renseignez un email valide"
+		}
+	}
+  }
