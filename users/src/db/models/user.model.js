@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import i18next from 'i18next';
 
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
@@ -35,7 +36,10 @@ module.exports = (sequelize, DataTypes) => {
     pseudo: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: i18next.t('db.pseudoUnique')
+      },
       required: [true, 'Votre pseudo est requis'],
       comment: 'Pseudo'
     },
@@ -117,7 +121,7 @@ module.exports = (sequelize, DataTypes) => {
       return result;
     });
   };
-
+ 
   // class User extends Model {
   //   static init(sequelize, DataTypes) {
   //     return super.init(, {

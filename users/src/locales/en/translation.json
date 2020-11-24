@@ -1,5 +1,43 @@
 {
 	"home": {
 	  "title": "Hallo Welt!"
+	},
+	"user": {
+		"userNotFound": "User not found",
+		"cantCreateUser": "Unable to create user"
+	},
+	"validation": {
+		"nom": {
+			"empty": "Please fill out your first name",
+			"valide": "Please provide a valide first name"
+		},		
+		"prenom": { 
+			"empty": "Please fill out your last name",
+			"valide": "Please provide a valide last name"
+		},
+		"pseudo": { 
+			"empty": "A pseudo is required",
+			"valide": "Please provide a valide pseudo"
+		},
+		"password": { 
+			"empty": "A password is required",
+			"valide": "Your password dosn't follow security conditions"
+		},
+		"adresse": { 
+			"empty": "An address is required",
+			"valide": "Please provide a valide address"
+		},
+		"codePostal": { 
+			"empty": "A zip code is required",
+			"valide": "Please provide a valide zip code"
+		},
+		"telephone": { 
+			"empty": "A phone number is required",
+			"valide": "Please provide a valide phone number"
+		},
+		"email": { 
+			"empty": "An email number is required",
+			"valide": "Please provide a valide email"
+		}
 	}
   }

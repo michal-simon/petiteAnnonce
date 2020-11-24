@@ -1,39 +1,43 @@
 {
-	"home": {
-	  "title": "Hallo Welt!"
+	"db": {
+	  "pseudoUnique": "Ce pseudo n'est pas disponible"
+	},
+	"user": {
+		"userNotFound": "Utilisateur introuvable",
+		"cantCreateUser": "Impossible de crée l'utilisateur"
 	},
 	"validation": {
 		"nom": {
-			"empty": "Merci de renseignez votre nom",
-			"valide": "Veuillez renseignez un nom valide"
+			"empty": "Merci de renseigner votre nom",
+			"valide": "Veuillez renseigner un nom valide"
 		},		
 		"prenom": { 
-			"empty": "Merci de renseignez votre prénom",
-			"valide": "Veuillez renseignez un prénom valide"
+			"empty": "Merci de renseigner votre prénom",
+			"valide": "Veuillez renseigner un prénom valide"
 		},
 		"pseudo": { 
-			"empty": "Merci de renseignez un pseudo",
-			"valide": "Veuillez renseignez un pseudo valide"
+			"empty": "Merci de renseigner un pseudo",
+			"valide": "Veuillez renseigner un pseudo valide"
 		},
 		"password": { 
-			"empty": "Merci de renseignez un mot de passe",
+			"empty": "Merci de renseigner un mot de passe",
 			"valide": "Votre mot de passe ne respecter pas les indications de sécurité"
 		},
 		"adresse": { 
-			"empty": "Merci de renseignez une adresse",
-			"valide": "Veuillez renseignez un adresse valide"
+			"empty": "Merci de renseigner une adresse",
+			"valide": "Veuillez renseigner un adresse valide"
 		},
 		"codePostal": { 
-			"empty": "Merci de renseignez un code postal",
-			"valide": "Veuillez renseignez un code postal valide"
+			"empty": "Merci de renseigner un code postal",
+			"valide": "Veuillez renseigner un code postal valide"
 		},
 		"telephone": { 
-			"empty": "Merci de renseignez un telephone",
-			"valide": "Veuillez renseignez un telephone valide"
+			"empty": "Merci de renseigner un telephone",
+			"valide": "Veuillez renseigner un telephone valide"
 		},
 		"email": { 
-			"empty": "Merci de renseignez un email",
-			"valide": "Veuillez renseignez un email valide"
+			"empty": "Merci de renseigner un email",
+			"valide": "Veuillez renseigner un email valide"
 		}
 	}
   }

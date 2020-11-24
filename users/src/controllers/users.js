@@ -17,10 +17,11 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     }
   }).then((user, error) => {
-    if (user?.id) {
-      return res.send(user);
-    }
     if (error) throw error;
+    if (user?.id) {
+      return res.json(user);
+    }
+    return res.status(404).json(req.t('user.userNotFound'));
   }).catch((err) => {
     throw err;
   });
@@ -41,7 +42,7 @@ router.put('/:id', async (req, res) => {
     if (affectedRow > 0) {
       return res.status(200).json(updatedUser);
     }
-    return res.status(404).json('User not found');
+    return res.status(404).json(req.t('user.userNotFound'));
   }).catch((err) => {
     throw err;
   });
@@ -52,14 +53,17 @@ router.put('/:id', async (req, res) => {
   * @return {JSON}
  */
 router.post('/', usersValidation(), validate, async (req, res) => {
+
   const newProfile = req.body;
   db.models.user.create(newProfile).then((newUser) => {
     if (newUser?.id) {
       return res.status(200).json(newUser);
     }
-    return res.status(404).json('can\'t create user');
+    return res.status(404).json(req.t('user.cantCreateUser'));
   }).catch((err) => {
-    throw err;
+    return res.status(422).json(
+      { error: { message: err.errors[0].message } }
+    );
   });
 });
 
@@ -76,7 +80,7 @@ router.delete('/:id', (req, res) => {
     if (deleted > 0) {
       return res.status(200).json(deleted);
     }
-    return res.status(404).json('User not found');
+    return res.status(404).json(req.t('user.userNotFound'));
   }).catch((err) => {
     throw err;
   });
