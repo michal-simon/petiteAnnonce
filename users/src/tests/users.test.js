@@ -148,3 +148,34 @@ describe('test users api validations', () => {
     });
   });
 });
+
+describe('test users api edge', () => {
+  it('should test existing pseudo', () => {
+    return new Promise((done) => {
+      request(app)
+        .post('/users/')
+        .send({
+          civilite: '1',
+          nom: 'yannick',
+          prenom: 'Fremon',
+          pseudo: 'Yecodeo',
+          password: '123456789aA!',
+          isActive: false,
+          adresse: '22 rue des parisiens',
+          codePostal: '13013',
+          telephone: '0661636585',
+          email: 'takyama99999999999@gmail.com',
+          recommandations: 5,
+          photo: 'https://www.fillmurray.com/64/64',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        })
+        .set('Accept', 'application/json')
+        .then((response) => {
+          expect(response.statusCode).toBe(422);
+          expect(response.body).toHaveProperty('error', { message: 'Email address already in use!' });
+          done();
+        });
+    });
+  });
+});
