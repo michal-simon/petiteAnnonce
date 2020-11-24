@@ -13,7 +13,7 @@ ENV DB_HOST=postgres
 # importing port argument
 ARG DB_PORT
 ENV DB_PORT=$DB_PORT
-
+# ENV DEBUG=express:* 
 RUN useradd --user-group --create-home --shell /bin/false $USER
 ENV HOME=/home/$USER
 COPY package.json yarn.lock $HOME/$DIRAPP/

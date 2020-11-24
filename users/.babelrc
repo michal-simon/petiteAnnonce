@@ -15,7 +15,7 @@
       {
         "root": ["./src"],
         "alias": {
-          "test": "./test",
+          "test": "./src/tests",
           "underscore": "lodash"
         }
       }

@@ -1,5 +1,9 @@
 {
-    "extends": ["eslint:recommended", "airbnb-base","plugin:jest/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base",
+        "plugin:jest/recommended"
+    ],
     "root": true,
     "parser": "@babel/eslint-parser",
     "parserOptions": {
@@ -7,7 +11,7 @@
         "sourceType": "module",
         "babelOptions": {
             "configFile": "./users/.babelrc"
-          }
+        }
     },
     "plugins": ["jest"],
     "env": {
@@ -21,7 +25,7 @@
     "settings": {
         "jest": {
             "version": 26
-        }
+        },
     },
     "rules": {
         "brace-style": [
@@ -44,11 +48,14 @@
         "max-len": ["error", 120],
         "consistent-return": "off",
         "no-console": "off",
-        "no-param-reassign": [2, {"props": false}],
+        "no-param-reassign": [2, {
+            "props": false
+        }],
         "prefer-destructuring": 0,
         "treatUndefinedAsUnspecified": 0,
         "arrow-body-style": 0,
         "import/no-dynamic-require": "off",
-        "no-unused-expressions": "off"
+        "no-unused-expressions": "off",
+        "import/no-unresolved": "off"
     }
 }
