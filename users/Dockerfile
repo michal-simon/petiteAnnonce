@@ -1,4 +1,4 @@
-FROM node:12.18.3
+FROM node:latest
 # # CMD [ "openssl", "req -nodes -newkey rsa:2048 -keyout example.key -out example.csr -subj "/C=FR/ST==IDF/L=PARIS/O=Global Security/OU=IT Department/CN=nikah.com"]
 
 ENV USER=www
@@ -9,7 +9,7 @@ ENV DB_NAME=users
 ENV DB_USER=root
 ENV DB_PASS=root
 ENV APP_PORT=3000
-ENV DB_HOST=postgres
+ENV DB_HOST=user-db
 # importing port argument
 ARG DB_PORT
 ENV DB_PORT=$DB_PORT
