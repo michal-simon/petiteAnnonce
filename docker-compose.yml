@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+  # user product service
   user-app:
     container_name: user-app
     build: 
@@ -13,13 +14,35 @@ services:
     networks:
       - api
     depends_on:
-      - postgres
+      - user-db
     links:
-      - postgres
+      - user-db
     volumes:
       - ./users:/home/www/webapp
       - /home/www/webapp/node_modules
-  postgres:
+  # publication product service
+  publication-app:
+    container_name: publication-app
+    build: 
+      context: ./publication
+      dockerfile: ./Dockerfile
+      args:
+        DB_PORT: 27017
+    restart: on-failure
+    ports:
+      - "3001:3000"
+    networks:
+      - api
+    depends_on:
+      - publicationdb
+    links:
+      - publicationdb
+    volumes:
+      - ./publication:/home/www/webapp
+      - /home/www/webapp/node_modules
+  # user product service
+  user-db:
+    container_name: user-db
     image:  postgres:latest
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -29,6 +52,22 @@ services:
       - POSTGRES_DB=users
     ports:
       - 7200:5432
+    restart: on-failure
+    networks:
+      - api
+  publicationdb:
+    container_name: publication-db
+    image:  mongo:latest
+    volumes:
+      - mongodata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: publication
+      MONGO_INITDB_USERNAME: root
+      MONGO_INITDB_PASSWORD: root
+    ports:
+      - 27017:27017
     restart: on-failure
     networks:
       - api
@@ -43,9 +82,9 @@ services:
     ports:
       - 8081:80
     depends_on:
-      - postgres
+      - user-db
     links:
-      - postgres
+      - user-db
     networks:
       - api
     volumes:
@@ -53,6 +92,7 @@ services:
 volumes:
   pgdata: {}
   pgadmin: {}
+  mongodata: {}
 networks:
   api:
     driver: bridge
