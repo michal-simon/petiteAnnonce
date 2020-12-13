@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import i18next from 'i18next';
 import i18nextMiddleware from 'i18next-http-middleware';
 import Backend from 'i18next-fs-backend';
-import configI18n from './locales/config';
+import configI18n from './config/locales.config';
 
 i18next
   .use(Backend)

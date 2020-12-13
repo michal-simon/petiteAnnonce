@@ -1,0 +1,7 @@
+{
+  "validation": {
+    "nom": {
+      "empty": "validation.nom.empty"
+    }
+  }
+}
