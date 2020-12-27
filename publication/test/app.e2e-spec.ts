@@ -2,13 +2,19 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { AppService } from 'src/app.service';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [AppService, AppModule],
+      providers: [
+        AppService,
+        { provide: getRepositoryToken(AppService), useValue: {} },
+      ],
     }).compile();
 
     app = moduleFixture.createNestApplication();
