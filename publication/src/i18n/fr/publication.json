@@ -1,0 +1,10 @@
+{
+    "create": {
+		"error": {
+			"alphanum": "doit contenir que des chiffres et des lettres",
+			"length": "doit etre au minimum 5 caractéres",
+			"notEmpty": "ne doit pas être vide",
+			"mustBeNumber": "doit être un numéro",
+			"enum": "doit être une des valeurs suivant: "
+		}}
+}

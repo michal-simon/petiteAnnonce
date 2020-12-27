@@ -1,0 +1,10 @@
+{
+    "create": {
+		"error": {
+			"alphanum": "must contain only letters and numbers",
+			"length": "must be longer than or equal to 5 characters",
+			"notEmpty": "should not be empty",
+			"mustBeNumber": "must be a number",
+			"enum": " must be one of the following values: bon état,exellent,neuf"
+		}}
+}
