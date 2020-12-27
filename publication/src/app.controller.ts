@@ -8,24 +8,30 @@ import {
   HttpCode,
   Body,
 } from '@nestjs/common';
+import { validate } from 'class-validator';
 
 import { AppService } from './app.service';
-import PublicationDto from './dto/publication.dto';
+import PublicationDto from './dto/create.publication.dto';
 
 @Controller('publication')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(public appService: AppService) {}
 
-  @Get(':id')
-  getPublication(@Param() param): string {
+  @Get()
+  getPublication(): string {
     return this.appService.getHello();
   }
   @Post()
   @HttpCode(204)
   create(@Body() publicationDto: PublicationDto) {
+    validate(publicationDto).then((errors) => {
+      console.log(errors);
+    });
+
     this.appService
       .create(publicationDto)
       .then((res) => {
+        console.log('controller called', res);
         return res;
       })
       .catch((error) => {
@@ -38,6 +44,6 @@ export class AppController {
   }
   @Delete(':id')
   delete(@Param() param): string {
-    return '';
+    return param;
   }
 }

@@ -44,7 +44,7 @@ export default class Publication {
   @Column({ nullable: false })
   ville: string;
 
-  @OneToMany(() => Images, (images) => images.publication)
+  @OneToMany((type) => Images, (images) => images.publication)
   images: Images[];
 
   @Column({ default: false })
