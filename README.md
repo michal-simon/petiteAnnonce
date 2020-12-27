@@ -1,2 +1,4 @@
-# petiteAnnonce
-site de petite annonce, Architecture micro-service nodejs mongodb express
+# PetiteAnnonce
+Projet pour illustré le fonctionnement d'une architecture microservice,
+
+le site proposera un systéme de petite annonce
