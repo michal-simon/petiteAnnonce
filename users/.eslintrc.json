@@ -2,12 +2,10 @@
     "extends": [
         "eslint:recommended",
         "airbnb-base",
-        "plugin:jest/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
+        "plugin:jest/recommended"
     ],
     "root": true,
-    "parser": "@typescript-eslint/parser",
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": 11,
         "sourceType": "module",
@@ -15,10 +13,7 @@
             "configFile": "./users/.babelrc"
         }
     },
-    "plugins": [
-        "jest", 
-        "@typescript-eslint"
-    ],
+    "plugins": ["jest"],
     "env": {
         "es2020": true,
         "commonjs": true,
