@@ -4,7 +4,6 @@
         "airbnb-base",
         "plugin:jest/recommended",
         "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint",
         "plugin:prettier/recommended"
     ],
     "root": true,
@@ -16,7 +15,10 @@
             "configFile": "./users/.babelrc"
         }
     },
-    "plugins": ["jest", "prettier", "@typescript-eslint"],
+    "plugins": [
+        "jest", 
+        "@typescript-eslint"
+    ],
     "env": {
         "es2020": true,
         "commonjs": true,
